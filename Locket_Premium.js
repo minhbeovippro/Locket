@@ -55,4 +55,15 @@ if (match) {
   obj.subscriber.entitlements["Locket"] = gold_entitlement;
 }
 
+var extra_benefits = {
+  ad_free_experience: true,
+  exclusive_frames: ["gold_frame", "diamond_frame"], 
+  priority_upload_speed: true,
+  custom_themes_enabled: true,
+  exclusive_stickers: ["gold_heart", "vip_star"],
+  early_feature_access: true 
+};
+
+obj.subscriber.benefits = extra_benefits;
+
 $done({ body: JSON.stringify(obj) });
