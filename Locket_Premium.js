@@ -44,14 +44,12 @@ var gold_entitlement = {
   region: "us"
 };
 
-
-const match = Object.keys(mapping).find(e => ua.includes(e));
+const match = Object.keys(mapping).find(e => ua && ua.includes(e));
 
 if (match) {
   let entitlementKey = mapping[match][0] || "Locket";
-  let subscriptionKey = mapping[match][1] || "locket_3600_1y";
-
-  obj.subscriber.subscriptions[subscriptionKey] = locketgold;
+  
+  obj.subscriber.subscriptions["locket_3600_1y"] = locketgold;
   obj.subscriber.entitlements[entitlementKey] = gold_entitlement;
 } else {
   obj.subscriber.subscriptions["locket_3600_1y"] = locketgold;
