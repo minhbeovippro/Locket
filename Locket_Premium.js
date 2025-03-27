@@ -1,4 +1,4 @@
-var specificDate = "2025-03-25T00:00:00Z"; 
+var specificDate = "2025-04-01T00:00:00Z"; 
 
 const mapping = {
   '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
@@ -28,42 +28,34 @@ var locketgold = {
   original_purchase_date: specificDate,
   purchase_date: specificDate,
   store: "us_app_store",
+  store_country: "US",
   country: "US",
-  region: "us"
+  region: "us" 
 };
 
 var gold_entitlement = {
   grace_period_expires_date: null,
   purchase_date: specificDate,
-  product_identifier: "com.locket.premium.yearly",
+  product_identifier: "locket_3600_1y",
   expires_date: "2099-12-31T00:00:00Z",
+  store: "us_app_store",
+  store_country: "US",
   country: "US",
-  region: "us",
-  gold_badge_enabled: true
+  region: "us"
 };
+
 
 const match = Object.keys(mapping).find(e => ua.includes(e));
 
 if (match) {
   let entitlementKey = mapping[match][0] || "Locket";
-  let subscriptionKey = mapping[match][1] || "com.locket.premium.yearly";
+  let subscriptionKey = mapping[match][1] || "locket_3600_1y";
 
   obj.subscriber.subscriptions[subscriptionKey] = locketgold;
   obj.subscriber.entitlements[entitlementKey] = gold_entitlement;
 } else {
-  obj.subscriber.subscriptions["com.locket.premium.yearly"] = locketgold;
+  obj.subscriber.subscriptions["locket_3600_1y"] = locketgold;
   obj.subscriber.entitlements["Locket"] = gold_entitlement;
 }
-
-var extra_benefits = {
-  ad_free_experience: true,
-  exclusive_frames: ["gold_frame", "diamond_frame"], 
-  priority_upload_speed: true,
-  custom_themes_enabled: true,
-  exclusive_stickers: ["gold_heart", "vip_star"],
-  early_feature_access: true 
-};
-
-obj.subscriber.benefits = extra_benefits;
 
 $done({ body: JSON.stringify(obj) });
