@@ -1,4 +1,4 @@
-var specificDate = "2026-05-01T00:00:00Z"; 
+var specificDate = "2026-08-01T00:00:00Z"; 
 
 const mapping = {
   '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
