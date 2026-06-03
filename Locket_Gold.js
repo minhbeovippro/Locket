@@ -1,62 +1,53 @@
-var specificDate = "2026-08-01T00:00:00Z"; 
-
-const mapping = {
-  '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
-  'Locket': ['Gold']
-};
-
-var ua = $request.headers["User-Agent"] || $request.headers["user-agent"];
-
 try {
   var obj = JSON.parse($response.body);
 } catch (e) {
   $done({});
 }
 
+var now = new Date().toISOString();
+var specificDate = now; // dùng thời điểm hiện tại để tránh lỗi "future purchase"
+var expiresDate = "2099-12-31T00:00:00Z";
+
 obj.subscriber = obj.subscriber || {};
 obj.subscriber.entitlements = obj.subscriber.entitlements || {};
 obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
+obj.subscriber.non_subscriptions = obj.subscriber.non_subscriptions || {};
 
-var locketgold = {
+// Subscription object cho gói yearly
+var locketGoldSub = {
   is_sandbox: false,
   ownership_type: "PURCHASED",
   billing_issues_detected_at: null,
   period_type: "normal",
-  expires_date: "2099-12-31T00:00:00Z",
+  expires_date: expiresDate,
   grace_period_expires_date: null,
   unsubscribe_detected_at: null,
   original_purchase_date: specificDate,
   purchase_date: specificDate,
   store: "app_store",
-
-  // 🔹 Thêm thông tin tài khoản US
-  country: "US",
-  currency: "USD",
-  environment: "Production"
+  product_plan_identifier: null
 };
 
-var gold_entitlement = {
+// Subscription object cho gói monthly (fallback)
+var locketGoldMonthly = Object.assign({}, locketGoldSub);
+
+// Entitlement object
+var goldEntitlement = {
   grace_period_expires_date: null,
   purchase_date: specificDate,
   product_identifier: "com.locket.premium.yearly",
-  expires_date: "2099-12-31T00:00:00Z",
-  store: "app_store",
-
-  // 🔹 Thêm vùng mua US
-  country: "US"
+  expires_date: expiresDate,
+  store: "app_store"
 };
 
-const match = Object.keys(mapping).find(e => ua.includes(e));
+// Inject cả yearly lẫn monthly để app không bị lỗi version mới
+obj.subscriber.subscriptions["com.locket.premium.yearly"] = locketGoldSub;
+obj.subscriber.subscriptions["com.locket.premium.monthly"] = locketGoldMonthly;
 
-if (match) {
-  let entitlementKey = mapping[match][0] || "Locket";
-  let subscriptionKey = mapping[match][1] || "com.locket.premium.yearly";
+// Entitlement key "Gold" là key Locket dùng để check trong app
+obj.subscriber.entitlements["Gold"] = goldEntitlement;
 
-  obj.subscriber.subscriptions[subscriptionKey] = locketgold;
-  obj.subscriber.entitlements[entitlementKey] = gold_entitlement;
-} else {
-  obj.subscriber.subscriptions["com.locket.premium.yearly"] = locketgold;
-  obj.subscriber.entitlements["Locket"] = gold_entitlement;
-}
+// Một số bản Locket mới check thêm key "gold" (chữ thường)
+obj.subscriber.entitlements["gold"] = Object.assign({}, goldEntitlement);
 
 $done({ body: JSON.stringify(obj) });
