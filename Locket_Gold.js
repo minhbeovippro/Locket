@@ -28,11 +28,6 @@ var locketgold = {
   original_purchase_date: specificDate,
   purchase_date: specificDate,
   store: "app_store",
-
-  // 🔹 Thêm thông tin tài khoản US
-  country: "US",
-  currency: "USD",
-  environment: "Production"
 };
 
 var gold_entitlement = {
@@ -41,9 +36,7 @@ var gold_entitlement = {
   product_identifier: "com.locket.premium.yearly",
   expires_date: "2099-12-31T00:00:00Z",
   store: "app_store",
-
-  // 🔹 Thêm vùng mua US
-  country: "US"
+  country: "CN"
 };
 
 const match = Object.keys(mapping).find(e => ua.includes(e));
