@@ -355,3 +355,5 @@ if (ua.includes("Locket")) {
         persist_onboarding_step: "true",
         onboarding_contact_permission_step: "true"
     });
+}
+$done({ body: JSON.stringify(obj) });
