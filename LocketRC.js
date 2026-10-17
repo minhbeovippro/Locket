@@ -39,14 +39,6 @@ if (ua.includes("Locket")) {
             interval: 2592000,
             profile_banner: true
         }),
-        feature_discovery_popup_config: JSON.stringify({
-            tag: "LOCKET GOLD",
-            tag_gradient: true,
-            tag_style: "gold_gradient",
-            start_at: "2026-10-10T10:10:15Z",
-            end_at: "9999-01-09T10:10:14Z",
-            use_local_time_zone: true
-        }),
         profile_badge_visible: "true",
         lunar_new_year_app_icon_enabled: "true",
     });
@@ -213,14 +205,6 @@ if (ua.includes("Locket")) {
         widget_stale_state_enabled: "false",
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
-        widget_frame_event: JSON.stringify({
-            uid: "midautumn_2026",
-            url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
-            use_local_time_zone: true,
-            placement: "below",
-            start_at: "2026-10-10T10:10:15Z",
-            end_at: "9999-01-09T10:10:14Z"
-        }),
         live_activity_onboarding: "true",
         live_activity_onboarding_variant: "friending",
         register_live_activity_push_to_start_token: "true",
