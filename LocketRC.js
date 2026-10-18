@@ -298,23 +298,6 @@ if (ua.includes("Locket")) {
         persist_onboarding_step: "true",
         onboarding_contact_permission_step: "true",
     });
-    
-    // ============================================================
-    // 8. OVERLAY & CUSTOM CAPTIONS
-    // ============================================================
-    Object.assign(obj.entries, {
-        overlay_navigator_enabled: "true",
-        overlays_v2_config: JSON.stringify({ suggestions_enabled: true }),
-        captions_enabled: "true",
-        music_caption_enabled: "true",
-        music_caption_song_preview_enabled: "true",
-        link_caption_link_enabled: "true",
-        overlay_dynamic_captions: JSON.stringify([
-            "standard", "poll", "color_palette", "review", "music", "location",
-            "weather", "time", "streak", "star_sign", "party_time", "locket_count",
-            "good_morning", "goodnight", "ootd", "miss_you", "custom", "halloween_2026"
-        ]),
-    });
 }
 
 $done({ body: JSON.stringify(obj) });
