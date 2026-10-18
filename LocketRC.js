@@ -230,7 +230,8 @@ if (ua.includes("Locket")) {
         widget_badge_v2: "true",
         widget_stale_state_enabled: "false",
         widget_last_sent_indicator: "false",
-        widget_sync_token_reload_mode: "widget_frame_event: JSON.stringify({
+        widget_sync_token_reload_mode: "clearTokenNever",
+        widget_frame_event: JSON.stringify({
             uid: "midautumn_2026",
             // url: "https://i.ibb.co/1Yt1Dzzy/Shin-chan-1.png",
             url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
