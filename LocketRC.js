@@ -298,6 +298,54 @@ if (ua.includes("Locket")) {
         persist_onboarding_step: "true",
         onboarding_contact_permission_step: "true",
     });
+    
+    // ============================================================
+    // 8. OVERLAY & CUSTOM CAPTIONS
+    // ============================================================
+    Object.assign(obj.entries, {
+        overlay_navigator_enabled: "true",
+        overlays_v2_config: JSON.stringify({ suggestions_enabled: true }),
+        captions_enabled: "true",
+        music_caption_enabled: "true",
+        music_caption_song_preview_enabled: "true",
+        link_caption_link_enabled: "true",
+        overlay_dynamic_captions: JSON.stringify([
+            "standard", "poll", "color_palette", "review", "music", "location",
+            "weather", "time", "streak", "star_sign", "party_time", "locket_count",
+            "good_morning", "goodnight", "ootd", "miss_you", "custom", "halloween_2026"
+        ]),
+        overlay_items: JSON.stringify([
+            {
+                section: "General",
+                items: [
+                    { overlay_id: "caption:standard", source: "local", caption: { type: "standard" } },
+                    { overlay_id: "caption:link", source: "local", caption: { type: "link" }, overlay_type: "caption" },
+                    { overlay_id: "caption:review", source: "local", caption: { type: "review" } },
+                    { overlay_id: "caption:poll", source: "local", caption: { type: "poll" } },
+                    { overlay_id: "caption:music", source: "local", caption: { type: "music" } },
+                    { overlay_id: "caption:location", source: "local", caption: { type: "location" } },
+                    { overlay_id: "caption:weather", source: "local", caption: { type: "weather" } },
+                    { overlay_id: "caption:time", source: "local", caption: { type: "time" } },
+                    { overlay_id: "caption:streak", source: "local", caption: { type: "streak" } },
+                    { overlay_id: "caption:star_sign", source: "local", caption: { type: "star_sign" } },
+                    { overlay_id: "caption:color_palette", source: "local", caption: { type: "color_palette" } },
+                    { overlay_id: "caption:live", source: "local", caption: { type: "live" } },
+                    { overlay_id: "caption:locket_count", source: "local", caption: { type: "locket_count" } },
+                ]
+            },
+            {
+                section: "Decorative by Locket",
+                items: [
+                    { overlay_id: "caption:toi_nho_em", source: "remote", caption: { background: { colors: ["#FFFFFF", "#6D9EEB"] }, max_lines: 1, text: "보고 싶어 🥺", text_color: "#000000E6", type: "static_content" } },
+                    { overlay_id: "caption:party_time", source: "remote", caption: { background: { colors: ["#5EFFF5", "#FCFF57"] }, icon: { data: "🪩", type: "emoji" }, max_lines: 1, text: "Party Time!", text_color: "#000000E6", type: "static_content" } },
+                    { overlay_id: "caption:good_morning", source: "remote", daily_start_hour: 5, daily_end_hour: 10, caption: { background: { colors: ["#EF7402", "#EABF0F"] }, icon: { data: "☀️", type: "emoji" }, max_lines: 1, text: "Good morning", text_color: "#FFFFFFE5", type: "static_content" } },
+                    { overlay_id: "caption:goodnight", source: "remote", daily_start_hour: 19.5, daily_end_hour: 24, caption: { background: { colors: ["#370C6F", "#575CD4"] }, icon: { data: "🌙", type: "emoji" }, max_lines: 1, text: "Goodnight", text_color: "#FFFFFFE6", type: "static_content" } },
+                    { overlay_id: "caption:miss_you", source: "remote", caption: { background: { colors: ["#EC0C00", "#FF493F"] }, icon: { data: "🥰", type: "emoji" }, max_lines: 1, text: "Miss you", text_color: "#FFFFFFDB", type: "static_content" } },
+                    { overlay_id: "caption:ootd", source: "remote", caption: { background: { colors: ["#FFFFFF", "#DBDBDB"] }, icon: { data: "🕶", type: "emoji" }, max_lines: 1, text: "OOTD", text_color: "#101010E6", type: "static_content" } },
+                ]
+            },
+        ])
+    });
 }
 
 $done({ body: JSON.stringify(obj) });
