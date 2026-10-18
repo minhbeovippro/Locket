@@ -39,14 +39,6 @@ if (ua.includes("Locket")) {
             interval: 2592000,
             profile_banner: true
         }),
-        feature_discovery_popup_config: JSON.stringify({
-            tag: "LOCKET GOLD",
-            tag_gradient: true,
-            tag_style: "gold_gradient",
-            start_at: "2026-10-10T10:10:15Z",
-            end_at: "9999-01-09T10:10:14Z",
-            use_local_time_zone: true
-        }),
         profile_badge_visible: "true",
         lunar_new_year_app_icon_enabled: "true",
     });
@@ -77,10 +69,10 @@ if (ua.includes("Locket")) {
     // ============================================================
     Object.assign(obj.entries, {
         camera: JSON.stringify({
-            gold_max_duration: 30.0,
-            goldMaxDuration: 30.0,
-            max_duration: 30.0,
-            maxDuration: 30.0,
+            gold_max_duration: 60.0,
+            goldMaxDuration: 60.0,
+            max_duration: 60.0,
+            maxDuration: 60.0,
             ultra_wide: true,
             ultraWide: true,
             volume_button: true,
@@ -108,6 +100,7 @@ if (ua.includes("Locket")) {
         }),
         live_photos: JSON.stringify({
             capture: true,
+            video: true,
             viewing: true,
             catch_up: true,
             widget_looping_mode: "never"
@@ -140,16 +133,6 @@ if (ua.includes("Locket")) {
         camera_roll_video_upload_enabled: "true",
         internal_camera_roll_video_upload_enabled: "true",
         longer_camera_roll_videos_enabled: "true",
-        camera_roll_video_max_duration: "30.0",
-        camera_roll_max_duration: "30.0",
-        camera_roll_duration: "30.0",
-        max_video_duration: "30.0",
-        video_max_duration: "30.0",
-        video_trim_max_duration: "30.0",
-        trim_max_duration: "30.0",
-        gold_max_duration: "30.0",
-        goldMaxDuration: "30.0",
-        video_quality_mbps: "0.6",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
@@ -161,9 +144,40 @@ if (ua.includes("Locket")) {
         upload_thumbnail_image_quality: "0.8",
         upload_thumbnail_image_size: "1020"
     });
-
+    
     // ============================================================
-    // 4. MOMENTS, STREAK, CHAT & TƯƠNG TÁC
+    // 4. BẠN BÈ, GIỚI HẠN & ĐỀ XUẤT KẾT BẠN
+    // ============================================================
+    Object.assign(obj.entries, {
+        max_friends_count: "999999999",
+        friend_limit_mode: "0",
+        soft_friend_limit_threshold_count: "999999999",
+        show_friend_limit_on_cam: "false",
+        signup_max_friends_count: "999999999",
+        celebrity_inbox_limit: "999999999",
+        celebrity_inbox_enabled: "true",
+        celebrity_vip_qr_redemption_enabled: "true",
+        friend_limit_geo_override: JSON.stringify({ experiments: {}, area_code_overrides: {} }),
+        new_friends_monitoring_enabled: "true",
+        improved_friend_suggestions: "true",
+        show_friend_suggestions_by_default: "true",
+        emoji_friend_suggestions: "true",
+        prompt_contact_permissions_on_search: "true",
+        populate_phone_numbers_from_suggest_friends: "true",
+        hide_friends_enabled: "true",
+        hide_invite_links: "false",
+        hide_skip_contacts: "true",
+        show_all_contacts: "true",
+        show_invite_suggestions: "true",
+        show_no_friends_bottom_sheet: "false",
+        signup_allow_skip_add_friends: "true",
+        signup_custom_profile_picture: "true",
+        user_data_export_enabled: "true",
+        username_suggestions_enabled: "true",
+    });
+    
+    // ============================================================
+    // 5. MOMENTS, STREAK, CHAT & TƯƠNG TÁC
     // ============================================================
     try {
         var streak = JSON.parse(obj.entries.streak_config || "{}");
@@ -189,8 +203,12 @@ if (ua.includes("Locket")) {
         fetch_moments_in_conversation: "true",
         hide_chat_button: "false",
         groups_enabled: "true",
+        group_contact_invites_enabled: "true",
+        groups_onboarding_accept_invite_preview_enabled: "true",
+        chat_hyperlink_enabled_mode: "always_enabled",
         send_to_self_only_mode: "always_enabled",
         time_travel_rewind_v2_enabled: "true",
+        conversation_drafts_enabled: "true",
         calendar_delete_moment_enabled: "true",
         calendar_rewind_enabled: "false",
         locket_yearbook_story_sharing_encouraged: "true",
@@ -199,11 +217,11 @@ if (ua.includes("Locket")) {
         rollcall_profile_button: "true",
         rollcall_prompt_export_after_share: "true",
         rollcall_confirm_skip_tagging: "false",
-        rollcall_tap_to_tag_enabled: "false"
+        rollcall_tap_to_tag_enabled: "false",
     });
 
     // ============================================================
-    // 5. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
+    // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
     // ============================================================
     Object.assign(obj.entries, {
         widget_frame_event_max_images: "5",
@@ -213,14 +231,6 @@ if (ua.includes("Locket")) {
         widget_stale_state_enabled: "false",
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
-        widget_frame_event: JSON.stringify({
-            uid: "midautumn_2026",
-            url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
-            use_local_time_zone: true,
-            placement: "below",
-            start_at: "2026-10-10T10:10:15Z",
-            end_at: "9999-01-09T10:10:14Z"
-        }),
         live_activity_onboarding: "true",
         live_activity_onboarding_variant: "friending",
         register_live_activity_push_to_start_token: "true",
@@ -249,7 +259,7 @@ if (ua.includes("Locket")) {
     });
 
     // ============================================================
-    // 6. HỆ THỐNG, CACHE & STORAGE CDN
+    // 7. HỆ THỐNG, CACHE & STORAGE CDN
     // ============================================================
     Object.assign(obj.entries, {
         cdn_domain_replacements: JSON.stringify({ "firebasestorage.googleapis.com": "cdn.locketcamera.com" }),
@@ -286,8 +296,25 @@ if (ua.includes("Locket")) {
         use_thumbnails_for_sharing: "true",
         use_thumbnails_in_timeline: "true",
         persist_onboarding_step: "true",
-        onboarding_contact_permission_step: "true"
+        onboarding_contact_permission_step: "true",
     });
-  }
+    
+    // ============================================================
+    // 8. OVERLAY & CUSTOM CAPTIONS
+    // ============================================================
+    Object.assign(obj.entries, {
+        overlay_navigator_enabled: "true",
+        overlays_v2_config: JSON.stringify({ suggestions_enabled: true }),
+        captions_enabled: "true",
+        music_caption_enabled: "true",
+        music_caption_song_preview_enabled: "true",
+        link_caption_link_enabled: "true",
+        overlay_dynamic_captions: JSON.stringify([
+            "standard", "poll", "color_palette", "review", "music", "location",
+            "weather", "time", "streak", "star_sign", "party_time", "locket_count",
+            "good_morning", "goodnight", "ootd", "miss_you", "custom", "halloween_2026"
+        ]),
+    });
+}
 
 $done({ body: JSON.stringify(obj) });
