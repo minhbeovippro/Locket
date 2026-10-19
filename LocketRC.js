@@ -1,4 +1,3 @@
-// Kiểm tra an toàn xem response có tồn tại body không
 if (typeof $response === "undefined" || !$response || !$response.body) {
     $done({});
 } else {
@@ -8,7 +7,6 @@ if (typeof $response === "undefined" || !$response || !$response.body) {
     try {
         obj = JSON.parse($response.body);
     } catch (e) {
-        // Nếu body không phải JSON hợp lệ thì trả về nguyên bản
         $done($response);
     }
 
@@ -355,7 +353,7 @@ if (typeof $response === "undefined" || !$response || !$response.body) {
                 {
                     section: "Decorative by Locket",
                     items: [
-                        { overlay_id: "caption:toi_nho_em", source: "remote", caption: { background: { colors: ["#FFFFFF", "#6D9EEB"] }, max_lines: 1, text: "보고 싶어 🥺", text_color: "#000000E6", type: "static_content" } },
+                        { overlay_id: "caption:toi_nho_em", source: "remote", caption: { background: { colors: ["#FFFFFF", "#6D9EEB"] }, max_lines: 1, text: "toi_nho_em ❤️", text_color: "#000000E6", type: "static_content" } },
                         { overlay_id: "caption:party_time", source: "remote", caption: { background: { colors: ["#5EFFF5", "#FCFF57"] }, icon: { data: "🪩", type: "emoji" }, max_lines: 1, text: "Party Time!", text_color: "#000000E6", type: "static_content" } },
                         { overlay_id: "caption:good_morning", source: "remote", daily_start_hour: 5, daily_end_hour: 10, caption: { background: { colors: ["#EF7402", "#EABF0F"] }, icon: { data: "☀️", type: "emoji" }, max_lines: 1, text: "Good morning", text_color: "#FFFFFFE5", type: "static_content" } },
                         { overlay_id: "caption:goodnight", source: "remote", daily_start_hour: 19.5, daily_end_hour: 24, caption: { background: { colors: ["#370C6F", "#575CD4"] }, icon: { data: "🌙", type: "emoji" }, max_lines: 1, text: "Goodnight", text_color: "#FFFFFFE6", type: "static_content" } },
