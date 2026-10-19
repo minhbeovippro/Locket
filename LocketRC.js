@@ -90,8 +90,8 @@ if (typeof $response === "undefined" || !$response || !$response.body) {
                 telephoto: true,
                 srgb: true,
                 lanczos: true,
-                quality_mbps: 0.6,
-                qualityMbps: 0.6
+                quality_mbps: 0.8,
+                qualityMbps: 0.8
             }),
             camera_roll: JSON.stringify({
                 gold_max_duration: 30.0,
@@ -103,8 +103,8 @@ if (typeof $response === "undefined" || !$response || !$response.body) {
                 trim_max_duration: 30.0,
                 trimMaxDuration: 30.0,
                 camera_roll_max_duration: 30.0,
-                quality_mbps: 0.6,
-                qualityMbps: 0.6,
+                quality_mbps: 0.8,
+                qualityMbps: 0.8,
                 flash_button: true
             }),
             live_photos: JSON.stringify({
@@ -148,7 +148,7 @@ if (typeof $response === "undefined" || !$response || !$response.body) {
             audio_session_deactivation_enabled: "true",
             zoom_enabled: "true",
             upload_main: "false",
-            upload_main_image_quality: "0.6",
+            upload_main_image_quality: "0.8",
             upload_main_image_size: "1440",
             upload_thumbnail_image_quality: "0.8",
             upload_thumbnail_image_size: "1020"
