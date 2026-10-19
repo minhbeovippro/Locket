@@ -258,6 +258,7 @@ if (typeof $response === "undefined" || !$response || !$response.body) {
             prompt_notification_permissions_after_friending: "true",
             activity_bar_enabled: "true",
             journal_activity_bar_enabled: "true",
+            journal_map_view_enabled⁠: ⁠"true",
             journal_settings: JSON.stringify({
                 debug_menu_enabled: false,
                 focus_animation: false,
@@ -272,7 +273,8 @@ if (typeof $response === "undefined" || !$response || !$response.body) {
             }),
             qr_code_config: JSON.stringify({ profile_enabled: true, scanning_enabled: true }),
             custom_profile_pics: "true",
-            profile_menu_v2_enabled: "true"
+            profile_menu_v2_enabled: "true",
+            profile_badge_animation: "true"
         });
 
         // ============================================================
