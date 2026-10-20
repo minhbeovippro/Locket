@@ -1,3 +1,12 @@
+[rewrite_local]
+
+# ～ RevenueCat
+^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) url script-response-body https://cdn.jsdelivr.net/gh/minhbeovippro/Locket@main/revenuecat.js
+^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) url script-request-header https://cdn.jsdelivr.net/gh/minhbeovippro/Locket@main/deleteHeader.js
+
+[mitm]
+hostname=api.revenuecat.com
+
 // ========= ID ========= //
 const mapping = {
   'Locket': ['Gold']
