@@ -212,7 +212,7 @@ if (ua.includes("Locket")) {
         time_travel_rewind_v2_enabled: "true",
         conversation_drafts_enabled: "true",
         calendar_delete_moment_enabled: "true",
-        calendar_rewind_enabled: "false",
+        calendar_rewind_enabled: "true",
         locket_yearbook_story_sharing_encouraged: "true",
         rollcall_enabled: "true",
         rollcall_comment_actions: "true",
@@ -267,7 +267,8 @@ if (ua.includes("Locket")) {
         }),
         qr_code_config: JSON.stringify({ profile_enabled: true, scanning_enabled: true }),
         custom_profile_pics: "true",
-        profile_menu_v2_enabled: "true"
+        profile_menu_v2_enabled: "true",
+        profile_badge: "true"
     });
 
     // ============================================================
